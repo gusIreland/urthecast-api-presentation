@@ -1,7 +1,7 @@
 // This example creates an Area of Interest
-document.querySelector('#create-sf-aoi').addEventListener('click', function(evt) {
+document.querySelector('#create-aus-aoi').addEventListener('click', function(evt) {
     evt.preventDefault();
-    var data = $('#sf-aoi').html();
+    var data = $('#aus-aoi').html();
 
     // createAOI callback will receive data and URL and print to screen
     createAOI(data, function(data, url) {
@@ -9,12 +9,12 @@ document.querySelector('#create-sf-aoi').addEventListener('click', function(evt)
             id = data.payload[0]['id'];
 
         // Set the ID and name in localStorage for easy use in later demos
-        localStorage.setItem('sf-aoi-id', id);
-        localStorage.setItem('sf-aoi-name', name);
+        localStorage.setItem('aus-aoi-id', id);
+        localStorage.setItem('aus-aoi-name', name);
 
-        document.querySelector("#create-sf-aoi-response-name").textContent = name;
-        document.querySelector("#create-sf-aoi-response-id").textContent = id;
-        document.querySelector("#create-sf-aoi-response-url").textContent = url + "\n\n" + JSON.stringify(data);
+        document.querySelector("#create-aus-aoi-response-name").textContent = name;
+        document.querySelector("#create-aus-aoi-response-id").textContent = id;
+        document.querySelector("#create-aus-aoi-response-url").textContent = url + "\n\n" + JSON.stringify(data);
     });
 });
 
@@ -23,7 +23,7 @@ document.querySelector('#catalog-filter-aoi').addEventListener('click', function
     evt.preventDefault();
 
     // Expects AOi to have been created
-    var aoiId = localStorage.getItem('sf-aoi-id');
+    var aoiId = localStorage.getItem('aus-aoi-id');
 
     // Query the catalog, including the geometry parameter w/ intersects filter
     // This will ensure all scenes returned intersect with the AOI ID provided
@@ -38,7 +38,7 @@ document.querySelector('#sat-tracker-forecast-aoi').addEventListener('click', fu
     evt.preventDefault();
 
     // Expects AOI to have been created - no error handling
-    var aoiID = localStorage.getItem('sf-aoi-id');
+    var aoiID = localStorage.getItem('aus-aoi-id');
 
     // method is in sat-tracker-demo.js
     getNextForecastForAOI(aoiID, 'theia', function(data, url) {
@@ -54,7 +54,7 @@ document.querySelector('#sat-tracker-forecast-aoi-landsat').addEventListener('cl
     evt.preventDefault();
 
     // Expects AOi to have been created - no error handling
-    var aoiID = localStorage.getItem('sf-aoi-id');
+    var aoiID = localStorage.getItem('aus-aoi-id');
 
     // method is in sat-tracker-demo.js
     getNextForecastForAOI(aoiID, 'oli-tirs', function(data, url) {

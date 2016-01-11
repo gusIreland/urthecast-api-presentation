@@ -1,7 +1,7 @@
 // Get the most recent events for a given AOI
 document.querySelector('#event-stream-aoi').addEventListener('click', function(evt) {
     evt.preventDefault();
-    var aoiID = localStorage.getItem('sf-aoi-id');
+    var aoiID = localStorage.getItem('aus-aoi-id');
 
     getEventsForAoi(aoiID, function(data, url) {
         var result = "";
